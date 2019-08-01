@@ -28,7 +28,7 @@ public abstract class Producto {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "nativoDeBaseDeDatos")
 	@GenericGenerator(name = "nativoDeBaseDeDatos", strategy = "native")
-	private Integer id;
+	private Long id;
 
 	@Column(length = 255, nullable = false)
 	@Type(type = "string")
@@ -42,7 +42,7 @@ public abstract class Producto {
 	@JoinColumn(name = "precio_id", foreignKey = @ForeignKey(name = "fk_producto_precio_id"))
 	private Precio precio;
 
-	@ManyToMany(cascade = { CascadeType.PERSIST, CascadeType.MERGE })
+	@ManyToMany
 	private List<Proveedor> proveedores;
 
 	public Producto() {
@@ -65,11 +65,11 @@ public abstract class Producto {
 		this.addProveedor(proveedor);
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -142,4 +142,7 @@ public abstract class Producto {
 	
 	public abstract Double getPrecioFinal();
 	
+	public Proveedor getProveedor() {
+		return this.proveedores.get(0);
+	}
 }

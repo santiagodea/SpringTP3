@@ -22,7 +22,7 @@ public class Detalle {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "nativoDeBaseDeDatos")
 	@GenericGenerator(name = "nativoDeBaseDeDatos", strategy = "native")
-	private Integer id;
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn(name = "factura_id", foreignKey = @ForeignKey(name = "factura_detalle_id_fk"))
@@ -33,7 +33,7 @@ public class Detalle {
 	private Producto producto;
 
 	@Type(type = "integer")
-	private Integer cantidad;
+	private Long cantidad;
 
 	@OneToOne(cascade = CascadeType.ALL)
 	@JoinColumn(name = "precioDeVenta_id")
@@ -44,18 +44,18 @@ public class Detalle {
 		super();
 	}
 
-	public Detalle(Factura factura, Producto producto, Integer cantidad) {
+	public Detalle(Factura factura, Producto producto, Long cantidad) {
 		this.factura = factura;
 		this.producto = producto;
 		this.cantidad = cantidad;
 		this.precioDeVenta = producto.getPrecio();
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -75,11 +75,11 @@ public class Detalle {
 		this.producto = producto;
 	}
 
-	public Integer getCantidad() {
+	public Long getCantidad() {
 		return cantidad;
 	}
 
-	public void setCantidad(Integer cantidad) {
+	public void setCantidad(Long cantidad) {
 		this.cantidad = cantidad;
 	}
 

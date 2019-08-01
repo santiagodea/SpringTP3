@@ -29,6 +29,8 @@ public class ClienteDTO {
 		this.idCuenta = cliente.getCuenta().getId();
 	}
 	
+	// get y set
+	
 	public Long getId() {
 		return id;
 	}
@@ -76,8 +78,5 @@ public class ClienteDTO {
 	public void setNumeroDeCuenta(String numeroDeCuenta) {
 		this.numeroDeCuenta = numeroDeCuenta;
 	}
-
-	// get y set
-	
 	
 }

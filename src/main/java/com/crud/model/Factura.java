@@ -28,7 +28,7 @@ public class Factura {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "nativoDeBaseDeDatos")
 	@GenericGenerator(name = "nativoDeBaseDeDatos", strategy = "native")
-	private Integer id;
+	private Long id;
 
 	@ManyToOne
 	@JoinColumn(foreignKey = @ForeignKey(name = "cliente_id_fk"))
@@ -40,7 +40,7 @@ public class Factura {
 
 	@Column(nullable = false, unique = true)
 	@Type(type = "integer")
-	private Integer numero;
+	private Long numero;
 
 	@OneToMany(cascade = CascadeType.ALL, orphanRemoval = true, fetch = FetchType.EAGER)
 	private List<Detalle> detalles;
@@ -49,7 +49,7 @@ public class Factura {
 		super();
 	}
 
-	public Factura(Cliente cliente, LocalDate fecha2, Integer numero) {
+	public Factura(Cliente cliente, LocalDate fecha2, Long numero) {
 		this();
 		this.cliente = cliente;
 		this.fecha = fecha2;
@@ -83,11 +83,11 @@ public class Factura {
 		return true;
 	}
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
@@ -107,11 +107,11 @@ public class Factura {
 		this.fecha = fecha;
 	}
 
-	public Integer getNumero() {
+	public Long getNumero() {
 		return numero;
 	}
 
-	public void setNumero(Integer numero) {
+	public void setNumero(Long numero) {
 		this.numero = numero;
 	}
 
@@ -123,7 +123,7 @@ public class Factura {
 		this.detalles = detalles;
 	}
 
-	public void agregarDetalle(Producto producto, int cantidad) {
+	public void agregarDetalle(Producto producto, Long cantidad) {
 		this.detalles.add(new Detalle(this, producto, cantidad));
 	}
 

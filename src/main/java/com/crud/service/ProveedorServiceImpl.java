@@ -9,7 +9,7 @@ import com.crud.model.Proveedor;
 import com.crud.repository.ProveedorRepository;
 
 @Service
-public class ProveedorServiceImplementation implements ProveedorService{
+public class ProveedorServiceImpl implements ProveedorService{
 	
 	//atributos
 	
@@ -20,12 +20,13 @@ public class ProveedorServiceImplementation implements ProveedorService{
 	@Override
 	public Proveedor create(Proveedor proveedor) {
 		
-		Proveedor prov1 = new Proveedor(
-				proveedor.getCodigo(),
-				proveedor.getDescripcion()
-				);
-		this.proveedorRepository.save(prov1);
-		return prov1;
+//		Proveedor prov1 = new Proveedor(
+//				proveedor.getCodigo(),
+//				proveedor.getDescripcion()
+//				);
+//		
+		proveedorRepository.save(proveedor);
+		return proveedor;
 	}
 
 	@Override
@@ -39,6 +40,5 @@ public class ProveedorServiceImplementation implements ProveedorService{
 		// TODO Auto-generated method stub
 		return null;
 	}
-	
 
 }

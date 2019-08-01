@@ -21,7 +21,7 @@ public class Proveedor {
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO, generator = "nativoDeBaseDeDatos")
 	@GenericGenerator(name = "nativoDeBaseDeDatos", strategy = "native")
-	private Integer id;
+	private Long id;
 
 	@Column(length = 255, nullable = false, unique = true)
 	@Type(type = "string")
@@ -34,7 +34,7 @@ public class Proveedor {
 	@ManyToMany(mappedBy = "proveedores")
 	private List<Producto> productos;
 
-	public Integer getId() {
+	public Long getId() {
 		return id;
 	}
 
@@ -56,7 +56,7 @@ public class Proveedor {
 		this.codigo = codigo;
 	}
 
-	public void setId(Integer id) {
+	public void setId(Long id) {
 		this.id = id;
 	}
 
